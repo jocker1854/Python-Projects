@@ -27,6 +27,7 @@ def computer_guess(x):
     if x < 1:
         print("The upper limit must be at least 1.")
         return
+    
     low = 1
     high = x
     feedback = ''
@@ -64,14 +65,14 @@ if __name__ == "__main__":
     print("1 - You guess the number")
     print("2 - Computer guesses your number")
     mode = input("Enter 1 or 2: ").strip()
-
-    if mode == '1':
-        x = get_positive_integer("Enter the upper limit for the random number: ")
-        guess(x)
-    elif mode == '2':
-        x = get_positive_integer("Enter the upper limit for the computer to guess: ")
-        computer_guess(x)
-    else:
-        print("Invalid mode selected. Please restart the game and choose either 1 or 2.")
-
-
+    restart = True
+    while restart:
+        if mode == '1':
+            x = get_positive_integer("Enter the upper limit for the random number: ")
+            guess(x)
+        elif mode == '2':
+            x = get_positive_integer("Enter the upper limit for the computer to guess: ")
+            computer_guess(x)
+        else:
+            print("Invalid mode selected. Please restart the game and choose either 1 or 2.")
+        restart = input("Do you want to play again? (yes/no): ").lower().strip() == ('yes' or 'y')
