@@ -1,17 +1,27 @@
 import random
 
 def play_game():
-    valid_choices = ['rock', 'paper', 'scissors']
+    valid_choices = {
+        'rock': 'rock',
+        'r': 'rock',
+        'paper': 'paper',
+        'p': 'paper',
+        'scissors': 'scissors',
+        's': 'scissors'
+    }
+    quit_commands = ['q', 'quit']
+
     while True:
-        user = input("Enter your choice (rock, paper, scissors) or 'quit' to exit: ").strip().lower()
-        if user == 'quit':
+        user_input = input("Enter your choice (rock/r, paper/p, scissors/s) or 'q'/'quit' to exit: ").strip().lower()
+        if user_input in quit_commands:
             print("Thanks for playing! Goodbye.")
             break
-        if user not in valid_choices:
-            print("Invalid choice. Please enter 'rock', 'paper', 'scissors', or 'quit'.")
+        if user_input not in valid_choices:
+            print("Invalid choice. Please enter rock/r, paper/p, scissors/s, or q/quit to exit.")
             continue
 
-        computer = random.choice(valid_choices)
+        user = valid_choices[user_input]
+        computer = random.choice(['rock', 'paper', 'scissors'])
         print(f"Computer chose: {computer}")
 
         if user == computer:
